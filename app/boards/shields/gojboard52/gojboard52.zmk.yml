@@ -2,7 +2,7 @@ file_format: "1"
 id: gojboard52
 name: Gojboard52
 type: shield
-url: https://github.com/Ocelot08/Gojboard52
+url: https://github.com/kata0510/Lily58
 requires: [pro_micro]
 exposes: [i2c_oled]
 features:
