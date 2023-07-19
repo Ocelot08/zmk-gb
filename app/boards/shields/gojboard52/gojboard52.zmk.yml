@@ -1,0 +1,13 @@
+file_format: "1"
+id: gojboard52
+name: Gojboard52
+type: shield
+url: https://github.com/Ocelot08/Gojboard52
+requires: [pro_micro]
+exposes: [i2c_oled]
+features:
+  - keys
+  - display
+siblings:
+  - lily58_left
+  - lily58_right
