@@ -9,6 +9,13 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/ext_power.h>
 
+#define DEFAULT 0
+#define SYMBOL  1
+#define FNNUM  2
+#define SYSTEM 3
+//#define XCOM 4
+//#define XNUM  5
+
 / {
 	keymap {
 		compatible = "zmk,keymap";
