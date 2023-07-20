@@ -97,7 +97,6 @@
       };
     };
 
-/*
     // combos
     combos {
         compatible = "zmk,combos";
@@ -269,7 +268,6 @@
             bindings = <&bt BT_SEL 4>;
         };
     };
-*/
 
 // keymap
     keymap {
