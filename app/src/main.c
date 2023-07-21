@@ -27,4 +27,12 @@ void main(void) {
 #ifdef CONFIG_ZMK_DISPLAY
     zmk_display_init();
 #endif /* CONFIG_ZMK_DISPLAY */
+
+#ifdef CONFIG_ZMK_MOUSE
+    zmk_mouse_init();
+#endif /* CONFIG_ZMK_MOUSE */
+
+#ifdef CONFIG_ZMK_POINT_DEVICE
+    zmk_pd_init();
+#endif /* CONFIG_ZMK_POINT_DEVICE */
 }
