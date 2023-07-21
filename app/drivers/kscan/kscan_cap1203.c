@@ -8,21 +8,21 @@
 
 #define USE_POLLING IS_ENABLED(CONFIG_ZMK_KSCAN_CAP1203_POLL)
 
-#include <kernel.h>
-#include <drivers/i2c.h>
-#include <drivers/gpio.h>
+#include <zephyr/kernel.h>
+#include <zephyr/drivers/i2c.h>
+#include <zephyr/drivers/gpio.h>
 
-#include <logging/log.h>
+#include <zephyr/logging/log.h>
 
 #include <zmk/hid.h>
 #include <zmk/endpoints.h>
 #include <zmk/keymap.h>
 #include <zmk/mouse.h>
 #include <dt-bindings/zmk/mouse.h>
-#include <drivers/kscan.h>
+#include <zephyr/drivers/kscan.h>
 
 #if defined(CONFIG_CAP1203_MIX_MODE) || defined(CONFIG_CAP1203_SLIDER_MODE)
-#include <drivers/slider.h>
+#include <zephyr/drivers/slider.h>
 #endif
 
 LOG_MODULE_REGISTER(kscan_cap1203, CONFIG_ZMK_LOG_LEVEL);
