@@ -22,7 +22,7 @@
 #include <zephyr/drivers/kscan.h>
 
 #if defined(CONFIG_CAP1203_MIX_MODE) || defined(CONFIG_CAP1203_SLIDER_MODE)
-#include <zephyr/drivers/slider.h>
+#include <drivers/slider.h>
 #endif
 
 LOG_MODULE_REGISTER(kscan_cap1203, CONFIG_ZMK_LOG_LEVEL);
