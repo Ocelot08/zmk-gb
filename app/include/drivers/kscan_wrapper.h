@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include <drivers/kscan.h>
+#include <zephyr/drivers/kscan.h>
 
 #ifdef __cplusplus
 extern "C" {
