@@ -1,8 +1,8 @@
 /*
  * Generated using zcbor version 0.7.0-0.7.0
  * https://github.com/NordicSemiconductor/zcbor
- * at: 2023-10-02 17:22:57
- * Generated with a --default-max-qty of 99
+ * at: 2023-10-02 18:01:25
+ * Generated with a --default-max-qty of 256
  */
 
 #ifndef KEYMAP_CBOR_DECODE_H__
@@ -12,13 +12,13 @@
 #include <stdbool.h>
 #include <stddef.h>
 #include <string.h>
-#include <zmk/keymap/keymap_cbor_types.h>
+#include "zmk/keymap/keymap_cbor_types.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#if DEFAULT_MAX_QTY != 99
+#if DEFAULT_MAX_QTY != 256
 #error "The type file was generated with a different default_max_qty than this file"
 #endif
 

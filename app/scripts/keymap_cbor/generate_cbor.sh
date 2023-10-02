@@ -5,7 +5,7 @@ zcbor code \
     -t keymap layer key \
     --time-header \
     --git-sha-header \
-    --default-max-qty 99 \
+    --default-max-qty 256 \
     --output-c ../../src/keymap/keymap_cbor.c \
     --output-h ../../include/zmk/keymap/keymap_cbor.h \
-
+    --include-prefix zmk/keymap
