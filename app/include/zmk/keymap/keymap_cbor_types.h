@@ -1,7 +1,11 @@
 /*
+ * Copyright (c) 2023 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ *
  * Generated using zcbor version 0.7.0-0.7.0
  * https://github.com/NordicSemiconductor/zcbor
- * at: 2023-10-02 18:01:25
+ * at: 2023-10-02 18:11:13
  * Generated with a --default-max-qty of 256
  */
 
