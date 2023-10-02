@@ -1,0 +1,15 @@
+keymap = {
+    "version" => tstr,
+    "layers" => [+ layer],
+    "supported_behaviors" => [+ tstr],
+}
+
+layer = {
+    "name" => tstr,
+    "keys" => [+ key],
+}
+
+key = {
+    "supported_behavior" => tstr,
+    "parameters" => [+ tstr]
+}

@@ -7,6 +7,7 @@
 #include <drivers/behavior.h>
 #include <zephyr/sys/util.h>
 #include <zephyr/settings/settings.h>
+#include <string.h>
 #include <zephyr/bluetooth/bluetooth.h>
 #include <zephyr/logging/log.h>
 LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
@@ -115,10 +116,14 @@ SYS_INIT(zmk_keymap_init_settings, APPLICATION, 90);
 // Store the current keymap in settings
 int zmk_keymap_store_settings(void) {
     int err;
-    err = settings_save_one("zmk/keymap", zmk_keymap, sizeof(zmk_keymap));
-    if (err) {
-        LOG_ERR("Failed to save keymap settings (err %d)", err);
-        return err;
+    for (int i = 0; i < ZMK_KEYMAP_LAYERS_LEN; i++) {
+        char layer_name[16];
+        err = snprintf(layer_name, sizeof(layer_name), "zmk/keymap/layer%d", i);
+        err = settings_save_one(layer_name, zmk_keymap[i], sizeof(zmk_keymap[i]));
+        if (err) {
+            LOG_ERR("Failed to save keymap settings (err %d)", err);
+            return err;
+        }
     }
 
     LOG_DBG("Size of keymap: %d", sizeof(zmk_keymap));
