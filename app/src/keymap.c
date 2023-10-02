@@ -6,6 +6,7 @@
 
 #include <drivers/behavior.h>
 #include <zephyr/sys/util.h>
+#include <zephyr/settings/settings.h>
 #include <zephyr/bluetooth/bluetooth.h>
 #include <zephyr/logging/log.h>
 LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
@@ -77,6 +78,131 @@ static struct zmk_behavior_binding zmk_sensor_keymap[ZMK_KEYMAP_LAYERS_LEN]
                                                         DT_INST_FOREACH_CHILD(0, SENSOR_LAYER)};
 
 #endif /* ZMK_KEYMAP_HAS_SENSORS */
+
+#define TESTING_HLORD
+#ifdef TESTING_HLORD
+
+struct settings_handler zmk_keymap_settings_handler = {
+    .name = "zmk/keymap",
+};
+
+int zmk_keymap_store_settings(void);
+
+int zmk_keymap_init_settings(void) {
+    int err;
+    err = settings_subsys_init();
+    if (err) {
+        LOG_ERR("Failed to initialize settings subsystem (err %d)", err);
+        return err;
+    }
+
+    err = settings_register(&zmk_keymap_settings_handler);
+    if (err) {
+        LOG_ERR("Failed to register settings handler (err %d)", err);
+        return err;
+    }
+
+    LOG_DBG("Keymap storage enabled");
+    zmk_keymap_store_settings();
+
+    zmk_keymap_load_settings();
+
+    return 0;
+}
+
+SYS_INIT(zmk_keymap_init_settings, APPLICATION, 90);
+
+// Store the current keymap in settings
+int zmk_keymap_store_settings(void) {
+    int err;
+    err = settings_save_one("zmk/keymap", zmk_keymap, sizeof(zmk_keymap));
+    if (err) {
+        LOG_ERR("Failed to save keymap settings (err %d)", err);
+        return err;
+    }
+
+    LOG_DBG("Size of keymap: %d", sizeof(zmk_keymap));
+    LOG_DBG("Keymap settings saved");
+
+    return 0;
+}
+
+struct direct_immediate_value {
+	size_t len;
+	void *dest;
+	uint8_t fetched;
+};
+
+static int direct_loader_immediate_value(const char *name, size_t len,
+					 settings_read_cb read_cb, void *cb_arg,
+					 void *param)
+{
+	const char *next;
+	size_t name_len;
+	int rc;
+	struct direct_immediate_value *one_value =
+					(struct direct_immediate_value *)param;
+
+	name_len = settings_name_next(name, &next);
+
+	if (name_len == 0) {
+		if (len == one_value->len) {
+			rc = read_cb(cb_arg, one_value->dest, len);
+			if (rc >= 0) {
+				one_value->fetched = 1;
+				printk("immediate load: OK.\n");
+				return 0;
+			}
+
+			return rc;
+		}
+		return -EINVAL;
+	}
+
+	/* other keys aren't served by the callback
+	 * Return success in order to skip them
+	 * and keep storage processing.
+	 */
+	return 0;
+}
+
+int load_immediate_value(const char *name, void *dest, size_t len)
+{
+	int rc;
+	struct direct_immediate_value dov;
+
+	dov.fetched = 0;
+	dov.len = len;
+	dov.dest = dest;
+
+	rc = settings_load_subtree_direct(name, direct_loader_immediate_value,
+					  (void *)&dov);
+	if (rc == 0) {
+		if (!dov.fetched) {
+			rc = -ENOENT;
+		}
+	}
+
+	return rc;
+}
+
+int zmk_keymap_load_settings(void) {
+    int err;
+    struct zmk_behavior_binding loaded_keymap[ZMK_KEYMAP_LAYERS_LEN][ZMK_KEYMAP_LEN];
+    err = load_immediate_value("zmk/keymap", loaded_keymap, sizeof(loaded_keymap));
+    if (err) {
+        LOG_ERR("Failed to load keymap settings (err %d)", err);
+        return err;
+    }
+    
+    LOG_INF("Keymap example settings:");
+    LOG_INF("SETTINGS layer 0, position 0: %s", loaded_keymap[0][0].behavior_dev);
+    LOG_INF("ZMK layer 0, position 0: %s", zmk_keymap[0][0].behavior_dev);
+
+    return 0;
+}
+
+#endif
 
 static inline int set_layer_state(uint8_t layer, bool state) {
     if (layer >= ZMK_KEYMAP_LAYERS_LEN) {
