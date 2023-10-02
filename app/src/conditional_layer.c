@@ -13,7 +13,7 @@
 #include <zephyr/logging/log.h>
 
 #include <zmk/event_manager.h>
-#include <zmk/keymap.h>
+#include <zmk/keymap/keymap.h>
 #include <zmk/events/layer_state_changed.h>
 
 LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);

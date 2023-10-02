@@ -12,7 +12,7 @@
 
 #include <dt-bindings/zmk/rgb.h>
 #include <zmk/rgb_underglow.h>
-#include <zmk/keymap.h>
+#include <zmk/keymap/keymap.h>
 
 LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 

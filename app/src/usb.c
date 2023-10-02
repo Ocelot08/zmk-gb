@@ -11,7 +11,7 @@
 #include <zephyr/usb/class/usb_hid.h>
 
 #include <zmk/hid.h>
-#include <zmk/keymap.h>
+#include <zmk/keymap/keymap.h>
 #include <zmk/event_manager.h>
 #include <zmk/events/usb_conn_state_changed.h>
 

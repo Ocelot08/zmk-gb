@@ -6,7 +6,7 @@
 
 #include <drivers/behavior.h>
 #include <zmk/behavior.h>
-#include <zmk/keymap.h>
+#include <zmk/keymap/keymap.h>
 #include <zmk/sensors.h>
 
 struct behavior_sensor_rotate_config {

@@ -12,7 +12,7 @@
 
 #include <zmk/usb.h>
 #include <zmk/hid.h>
-#include <zmk/keymap.h>
+#include <zmk/keymap/keymap.h>
 #include <zmk/event_manager.h>
 
 LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);

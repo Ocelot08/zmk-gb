@@ -10,7 +10,7 @@
 #include <drivers/behavior.h>
 #include <zephyr/logging/log.h>
 #include <zmk/behavior.h>
-#include <zmk/keymap.h>
+#include <zmk/keymap/keymap.h>
 #include <zmk/matrix.h>
 #include <zmk/event_manager.h>
 #include <zmk/events/position_state_changed.h>

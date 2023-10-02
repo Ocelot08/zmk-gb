@@ -10,7 +10,7 @@
 #include <drivers/behavior.h>
 #include <zephyr/logging/log.h>
 
-#include <zmk/keymap.h>
+#include <zmk/keymap/keymap.h>
 #include <zmk/behavior.h>
 
 LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);

@@ -18,7 +18,7 @@
 #include <zmk/events/position_state_changed.h>
 #include <zmk/events/keycode_state_changed.h>
 #include <zmk/behavior.h>
-#include <zmk/keymap.h>
+#include <zmk/keymap/keymap.h>
 
 LOG_MODULE_DECLARE(zmk, CONFIG_ZMK_LOG_LEVEL);
 
