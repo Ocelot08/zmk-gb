@@ -171,12 +171,6 @@ static int at42qt2120_init_interrupt(const struct device *dev) {
 	const struct at42qt2120_config *cfg = dev->config;
 	int ret;
 
-	ret = gpio_is_ready_dt(&cfg->change_gpio);
-	if (!ret) {
-		LOG_ERR("GPIO port %s not ready", cfg->change_gpio.port->name);
-		return -ENODEV;
-	}
-
 	data->dev = dev;
 
 	ret = gpio_pin_configure_dt(&cfg->change_gpio, GPIO_INPUT);
@@ -373,7 +367,7 @@ static int at42qt2120_init(const struct device *dev)
                                  									    \
 	PM_DEVICE_DT_INST_DEFINE(n, at42qt2120_device_pm_action);		    \
 									                                    \
-	SENSOR_DEVICE_DT_INST_DEFINE(n,					                    \
+	DEVICE_DT_INST_DEFINE(n,					                    \
 			      at42qt2120_init,				                        \
 			      PM_DEVICE_DT_INST_GET(n),			                    \
 			      &at42qt2120_data_##n,			                        \
