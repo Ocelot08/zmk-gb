@@ -1,5 +1,5 @@
 
-if SHIELD_gojiboard52_LEFT
+if SHIELD_gojiboard52_RIGHT
 
 config ZMK_KEYBOARD_NAME
     default "gojiboard52"
