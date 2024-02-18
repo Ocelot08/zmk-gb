@@ -18,11 +18,11 @@ jobs:
       run: |
         west init -l app
         west update
-        west build -s zmk/app -d build/left -b nice_nano_v2 -- -DSHIELD=gojiboard52_touch_left
+        west build -s zmk-gb/app -d build/left -b nice_nano_v2 -- -DSHIELD=gojiboard52_left
 
     - name: Build Right Half Firmware
       run: |
-        west build -s zmk/app -d build/right -b nice_nano_v2 -- -DSHIELD=gojiboard52_touch_right
+        west build -s zmk-gb/app -d build/right -b nice_nano_v2 -- -DSHIELD=gojiboard52_right
 
     - name: Upload Left Half Artifact
       uses: actions/upload-artifact@v2
