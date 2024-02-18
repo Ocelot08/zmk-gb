@@ -1,4 +1,4 @@
-name: Build ZMK Firmware for Split Keyboard
+name: Build GojiBoard52
 
 on:
   push:
