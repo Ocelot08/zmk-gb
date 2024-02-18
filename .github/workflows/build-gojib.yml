@@ -1,61 +1,37 @@
-name: Build GojiBoard52
+name: Build Gojiboard52
 
-on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'app/**'
-      - '.github/workflows/build-gojib.yml'
+on: push
 
 jobs:
   build:
     runs-on: ubuntu-latest
     container:
-      image: docker.io/zmkfirmware/zmk-build-arm:3.2
+      image: zmkfirmware/zmk-dev-arm:stable
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v2
+      with:
+        submodules: recursive
 
-      - name: Cache west modules
-        uses: actions/cache@v3.0.2
-        with:
-          path: |
-            modules/
-            tools/
-            zephyr/
-            bootloader/
-          key: ${{ runner.os }}-build-${{ hashFiles('app/west.yml') }}
+    - name: Build Left Half Firmware
+      run: |
+        west init -l app
+        west update
+        west build -s zmk/app -d build/left -b nice_nano_v2 -- -DSHIELD=gojiboard52_touch_left
 
-      - name: Initialize workspace (west init)
-        run: west init -l app
+    - name: Build Right Half Firmware
+      run: |
+        west build -s zmk/app -d build/right -b nice_nano_v2 -- -DSHIELD=gojiboard52_touch_right
 
-      - name: Update modules (west update)
-        run: west update
+    - name: Upload Left Half Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: firmware-left
+        path: build/left/zephyr/zmk.uf2
 
-      - name: Export Zephyr CMake package (west zephyr-export)
-        run: west zephyr-export
-
-      - name: Build Firmware for gojiboard52_touch Left
-        run: west build -s app -b nice_nano_v2 -- -DSHIELD=gojiboard52_touch_left
-
-      - name: Archive Left Firmware Artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: firmware-left
-          path: |
-            build/zephyr/*.uf2
-            build/zephyr/*.hex
-
-      - name: Build Firmware for gojiboard52_touch Right
-        run: west build -s app -b nice_nano_v2 -- -DSHIELD=gojiboard52_touch_right
-        working-directory: .
-      
-      - name: Archive Right Firmware Artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: firmware-right
-          path: |
-            build/zephyr/*.uf2
-            build/zephyr/*.hex
+    - name: Upload Right Half Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: firmware-right
+        path: build/right/zephyr/zmk.uf2
