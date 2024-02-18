@@ -1,0 +1,22 @@
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install West
+        run: pip install west
+
+      - name: Initialize West
+        run: west init -l app
+
+      - name: Update West
+        run: west update
+
+      - name: Build Firmware
+        run: west build -s app -b nice_nano_v2 -- -DSHIELD=gojiboard52_touch
