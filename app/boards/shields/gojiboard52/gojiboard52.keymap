@@ -36,7 +36,7 @@
 &kp LCTRL  &kp LALT &kp LGUI &mo FNNUM &none   &kp SPACE        &kp SPACE &none  &mo SYSTEM &kp DOWN &kp UP   &kp RET
 			>;
 
-			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+//			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
 			
 		};
 
@@ -56,7 +56,7 @@
 &kp LCTRL  &kp LALT     &kp LGUI     &none        &none    &kp SPACE         &kp SPACE &none    &none     &none    &none   &kp RET
 			>;
 
-			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+//			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
 		};
 
 		fnnum_layer {
@@ -75,7 +75,7 @@
 &kp LCTRL &kp LALT &kp LGUI &trans  &none   &kp SPACE         &kp KP_N0 &none     &kp KP_DOT &kp MINUS  &kp PLUS     &kp KP_ENTER
 			>;
 
-			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+//			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
 		};
 		
 		system_layer {
@@ -94,7 +94,7 @@
 &kp LCTRL  &kp LALT     &kp LGUI     &kp RC(RS(ESC)) &none            &kp RC(RS(RG(O)))    	&kp RA(RS(RG(O))) &none  &trans     &kp C_VOL_DN &kp C_VOL_UP &kp KP_ENTER
 			>;
 
-			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+//			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
 		};
 	};
 };

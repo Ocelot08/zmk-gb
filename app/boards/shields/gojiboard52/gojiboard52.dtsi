@@ -45,7 +45,7 @@ RC(4,0) RC(4,1) RC(4,2) RC(4,3) RC(4,4) RC(4,5)          RC(4,6) RC(4,7) RC(4,8)
             ;
 
     };
-	
+/*	
     left_encoder: encoder_left {
         compatible = "alps,ec11";
         label = "LEFT_ENCODER";
@@ -53,7 +53,6 @@ RC(4,0) RC(4,1) RC(4,2) RC(4,3) RC(4,4) RC(4,5)          RC(4,6) RC(4,7) RC(4,8)
         b-gpios = <&pro_micro 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
         resolution = <4>;
     };
-
 
 	right_encoder: encoder_right {
 		status = "okay";
@@ -64,7 +63,6 @@ RC(4,0) RC(4,1) RC(4,2) RC(4,3) RC(4,4) RC(4,5)          RC(4,6) RC(4,7) RC(4,8)
 		resolution = <4>;
 	};
 
-
     sensors {
         compatible = "zmk,keymap-sensors";
         sensors = <&left_encoder &right_encoder>;
@@ -74,6 +72,7 @@ RC(4,0) RC(4,1) RC(4,2) RC(4,3) RC(4,4) RC(4,5)          RC(4,6) RC(4,7) RC(4,8)
 		compatible = "zmk,keymap-sliders";
 		sliders = <&slider_left &slider_right>;
 	};
+ */
 };
 
 
@@ -97,6 +96,7 @@ RC(4,0) RC(4,1) RC(4,2) RC(4,3) RC(4,4) RC(4,5)          RC(4,6) RC(4,7) RC(4,8)
     };
 };
 
+/*
 &i2c0 {
   compatible = "nordic,nrf-twi";
   status = "okay";
@@ -114,3 +114,4 @@ RC(4,0) RC(4,1) RC(4,2) RC(4,3) RC(4,4) RC(4,5)          RC(4,6) RC(4,7) RC(4,8)
   };
 
 };
+*/
