@@ -45,6 +45,13 @@ RC(4,0) RC(4,1) RC(4,2) RC(4,3) RC(4,4) RC(4,5)          RC(4,6) RC(4,7) RC(4,8)
             ;
 
     };
+
+	sensors {
+        compatible = "zmk,keymap-sensors";
+        sensors = <&slider>;
+        triggers-per-rotation = <20>;
+    };
+
 /*	
     left_encoder: encoder_left {
         compatible = "alps,ec11";
@@ -115,3 +122,14 @@ RC(4,0) RC(4,1) RC(4,2) RC(4,3) RC(4,4) RC(4,5)          RC(4,6) RC(4,7) RC(4,8)
 
 };
 */
+
+&i2c0 {
+    status = "okay";
+    compatible = "nordic,nrf-twim";
+    slider: at42qt2120@1c {
+        status = "okay";
+        compatible = "microchip,at42qt2120";
+        reg = <0x1c>;
+        change-gpios = <&gpio1 14 GPIO_ACTIVE_LOW>;
+    };
+};
