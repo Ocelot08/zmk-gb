@@ -36,16 +36,8 @@
 &kp LCTRL  &kp LALT &kp LGUI &mo FNNUM &none   &kp SPACE        &kp SPACE &none  &mo SYSTEM &kp DOWN &kp UP   &kp RET
 			>;
 
-			sensor-bindings = <
-                &kp A &kp B
-                &kp C &kp D
-            >;
+			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
 			
-			sensors: sensors {
-				compatible = "zmk,keymap-sensors";
-				sensors = <&slider>;
-				triggers-per-rotation = <20>;
-			};
 		};
 
 		symbol_layer {
