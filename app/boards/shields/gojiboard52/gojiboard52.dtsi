@@ -68,11 +68,6 @@ RC(4,0) RC(4,1) RC(4,2) RC(4,3) RC(4,4) RC(4,5)          RC(4,6) RC(4,7) RC(4,8)
         compatible = "zmk,keymap-sensors";
         sensors = <&left_encoder &right_encoder>;
     };
-	
-	sliders {
-		compatible = "zmk,keymap-sliders";
-		sliders = <&slider_left &slider_right>;
-	};
 };
 
 
