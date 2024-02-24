@@ -131,5 +131,12 @@ RC(4,0) RC(4,1) RC(4,2) RC(4,3) RC(4,4) RC(4,5)          RC(4,6) RC(4,7) RC(4,8)
         compatible = "microchip,at42qt2120";
         reg = <0x1c>;
         change-gpios = <&gpio1 9 GPIO_ACTIVE_LOW>;
+
+        // Define behavior bindings for touch events to keys A and B
+        label = "TOUCH_SLIDER";
+        bindings = <
+            &kp A  // Bind a keycode for A to a touch event
+            &kp B  // Bind a keycode for B to another touch event
+        >;
     };
 };
