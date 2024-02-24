@@ -37,9 +37,21 @@
     };
 };
 
+&i2c0 {
+    status = "okay";
+    compatible = "nordic,nrf-twim";
+    slider: at42qt2120@1c {
+        status = "okay";
+        compatible = "microchip,at42qt2120";
+        reg = <0x1c>;
+        change-gpios = <&gpio1 9 GPIO_ACTIVE_LOW>;
+    };
+};
+
 &slider {
     status = "okay";
 };
+
 
 /*
 &left_encoder {
