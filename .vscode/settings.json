@@ -1,7 +1,8 @@
 {
   "files.associations": {
     "*.overlay": "dts",
-    "*.keymap": "dts"
+    "*.keymap": "dts",
+    "behavior_sensor_rotate_common.h": "c"
   },
   "python.formatting.provider": "black",
   "[c]": {
