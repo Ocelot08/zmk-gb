@@ -102,13 +102,13 @@ RC(4,0) RC(4,1) RC(4,2) RC(4,3) RC(4,4) RC(4,5)          RC(4,6) RC(4,7) RC(4,8)
   status = "okay";
 
   slider_left: slider_left@28 {
-	  compatible = "zmk,kscan-cap1203";
+	  compatible = "zmk,at42qt2120";
 	  label = "SLIDER_LEFT";
     reg = <0x28>;
   };
 
   slider_right: slider_right@28 {
-	  compatible = "zmk,kscan-cap1203";
+	  compatible = "zmk,at42qt2120";
 	  label = "SLIDER_RIGHT";
     reg = <0x28>;
   };
