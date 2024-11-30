@@ -21,20 +21,8 @@
         ;
 };
 
-&i2c0 {
-    status = "okay";
-    slider: at42qt2120@1c {
-        compatible = "microchip,at42qt2120";
-        reg = <0x1c>;
-        // change-gpios = <&gpio1 14 GPIO_ACTIVE_LOW>;
-    };
+/*
+&right_encoder {
+	status = "okay";
 };
-
-&keymap {
-    compatible = "zmk,keymap";
-    layer_0 {
-        bindings = <
-            &inc &dec
-        >;
-    };
-};
+*/
