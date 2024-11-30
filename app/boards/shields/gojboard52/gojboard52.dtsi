@@ -47,7 +47,6 @@ RC(4,0) RC(4,1) RC(4,2) RC(4,3) RC(4,4) RC(4,5)          RC(4,6) RC(4,7) RC(4,8)
     };
 
     left_encoder: encoder_left {
-		status = "okay";
         compatible = "alps,ec11";
         label = "LEFT_ENCODER";
         a-gpios = <&pro_micro 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
@@ -99,13 +98,19 @@ RC(4,0) RC(4,1) RC(4,2) RC(4,3) RC(4,4) RC(4,5)          RC(4,6) RC(4,7) RC(4,8)
 };
 
 &i2c0 {
-    compatible = "nordic,nrf-twi";
-    status = "okay";
+  compatible = "nordic,nrf-twi";
+  status = "okay";
 
-    at42qt2120: at42qt2120@1b {
-        compatible = "microchip,at42qt2120";
-        reg = <0x1b>; /* The I2C address of the AT42QT2120 */
-        interrupt-gpios = <&gpio0 2 GPIO_ACTIVE_LOW>; /* Adjust GPIO pin as needed */
-        label = "AT42QT2120";
-    };
+  slider_left: slider_left@28 {
+	  compatible = "zmk,kscan-cap1203";
+	  label = "SLIDER_LEFT";
+    reg = <0x28>;
+  };
+
+  slider_right: slider_right@28 {
+	  compatible = "zmk,kscan-cap1203";
+	  label = "SLIDER_RIGHT";
+    reg = <0x28>;
+  };
+
 };
