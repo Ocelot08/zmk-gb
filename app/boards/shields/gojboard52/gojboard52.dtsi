@@ -98,19 +98,20 @@ RC(4,0) RC(4,1) RC(4,2) RC(4,3) RC(4,4) RC(4,5)          RC(4,6) RC(4,7) RC(4,8)
 };
 
 &i2c0 {
-  compatible = "nordic,nrf-twi";
-  status = "okay";
+    compatible = "nordic,nrf-twi";
+    status = "okay";
+    clock-frequency = <I2C_BITRATE_STANDARD>;
 
-  slider_left: slider_left@28 {
-	  compatible = "zmk,at42qt2120";
-	  label = "SLIDER_LEFT";
-    reg = <0x28>;
-  };
+    touch_slider: at42qt2120@28 {
+        compatible = "zmk,at42qt2120";
+        reg = <0x28>;
+        label = "TOUCH_SLIDER";
+        status = "okay";
+    };
+};
 
-  slider_right: slider_right@28 {
-	  compatible = "zmk,at42qt2120";
-	  label = "SLIDER_RIGHT";
-    reg = <0x28>;
-  };
-
+sensors {
+    compatible = "zmk,keymap-sensors";
+    sensors = <&left_encoder &right_encoder &touch_slider>;
+    // Add the slider to existing sensors list
 };
