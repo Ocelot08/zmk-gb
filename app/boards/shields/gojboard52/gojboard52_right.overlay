@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-#include "gojiboard52.dtsi"
+#include "gojboard52.dtsi"
 
 &default_transform {
     col-offset = <6>;

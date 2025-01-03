@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-#include "gojiboard52.dtsi"
+#include "gojboard52.dtsi"
 
 &kscan0 {
     col-gpios
@@ -37,6 +37,7 @@
     };
 };
 
+/*
 &i2c0 {
     status = "okay";
     compatible = "nordic,nrf-twim";
@@ -53,7 +54,7 @@
 };
 
 
-/*
+
 &left_encoder {
     status = "okay";
 };

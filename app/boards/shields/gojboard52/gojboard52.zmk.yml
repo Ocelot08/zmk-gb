@@ -1,0 +1,13 @@
+file_format: "1"
+id: gojboard52
+name: gojboard52touch
+type: shield
+url: https://github.com/Ocelot08/gojboard52
+requires: [pro_micro]
+exposes: [i2c_oled]
+features:
+  - keys
+  - display
+siblings:
+  - gojboard52_left
+  - gojboard52_right
