@@ -1,0 +1,11 @@
+if(CONFIG_SHIELD_GOJBOARD52_LEFT)
+    zephyr_library()
+    zephyr_library_include_directories(${ZEPHYR_KMSIS_INCLUDE_DIR})
+    zephyr_library_include_directories(${ZEPHYR_BASE}/drivers)
+endif()
+
+if(CONFIG_SHIELD_GOJBOARD52_RIGHT)
+    zephyr_library()
+    zephyr_library_include_directories(${ZEPHYR_KMSIS_INCLUDE_DIR})
+    zephyr_library_include_directories(${ZEPHYR_BASE}/drivers)
+endif()
