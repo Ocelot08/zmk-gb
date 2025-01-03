@@ -1,15 +1,15 @@
 
-if SHIELD_gojiboard52_LEFT
+if SHIELD_gojboard52_LEFT
 
 config ZMK_KEYBOARD_NAME
-    default "gojiboard52"
+    default "gojboard52"
 
 config ZMK_SPLIT_ROLE_CENTRAL
     default y
 
 endif
 
-if SHIELD_gojiboard52_LEFT || SHIELD_gojiboard52_RIGHT
+if SHIELD_gojboard52_LEFT || SHIELD_gojboard52_RIGHT
 
 config ZMK_SPLIT
     default y
