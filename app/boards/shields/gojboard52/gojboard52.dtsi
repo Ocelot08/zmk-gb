@@ -79,7 +79,7 @@
          status = "okay";
          compatible = "microchip,at42qt2120";
          reg = <0x1c>;
-         change-gpios = <&pro_micro 9 GPIO_ACTIVE_LOW>;  // Adjust GPIO as needed
+         change-gpios = <&pro_micro 1 GPIO_ACTIVE_LOW>;  // Adjust GPIO as needed
      };
  };
  
