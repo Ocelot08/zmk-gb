@@ -73,15 +73,32 @@
  };
  
  &pro_micro_i2c {
-     status = "okay";
-     compatible = "nordic,nrf-twim";
-     slider: at42qt2120@1c {
-         status = "okay";
-         compatible = "microchip,at42qt2120";
-         reg = <0x1c>;
-         change-gpios = <&pro_micro 1 GPIO_ACTIVE_LOW>;  // Adjust GPIO as needed
-     };
- };
+    status = "okay";
+    compatible = "nordic,nrf-twim";
+
+    oled: ssd1306@3c {
+        compatible = "solomon,ssd1306fb";
+        reg = <0x3c>;
+        label = "DISPLAY";
+        width = <128>;
+        height = <32>;
+        segment-offset = <0>;
+        page-offset = <0>;
+        display-offset = <0>;
+        multiplex-ratio = <31>;
+        segment-remap;
+        com-invdir;
+        com-sequential;
+        prechargep = <0x22>;
+    };
+
+    slider: at42qt2120@1c {
+        status = "okay";
+        compatible = "microchip,at42qt2120";
+        reg = <0x1c>;
+        change-gpios = <&gpio1 9 GPIO_ACTIVE_LOW>;
+    };
+};
  
  /* 
  &i2c0 {
